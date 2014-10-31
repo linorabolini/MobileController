@@ -1,0 +1,234 @@
+0 info it worked if it ends with ok
+1 verbose cli [ 'node', '/usr/local/bin/npm', 'install', '-g', 'jscs' ]
+2 info using npm@1.4.28
+3 info using node@v0.10.32
+4 verbose cache add [ 'jscs', null ]
+5 verbose cache add name=undefined spec="jscs" args=["jscs",null]
+6 verbose parsed url { protocol: null,
+6 verbose parsed url   slashes: null,
+6 verbose parsed url   auth: null,
+6 verbose parsed url   host: null,
+6 verbose parsed url   port: null,
+6 verbose parsed url   hostname: null,
+6 verbose parsed url   hash: null,
+6 verbose parsed url   search: null,
+6 verbose parsed url   query: null,
+6 verbose parsed url   pathname: 'jscs',
+6 verbose parsed url   path: 'jscs',
+6 verbose parsed url   href: 'jscs' }
+7 silly lockFile 86ad1086-jscs jscs
+8 verbose lock jscs /Users/linorabolini/.npm/86ad1086-jscs.lock
+9 silly lockFile 86ad1086-jscs jscs
+10 silly lockFile 86ad1086-jscs jscs
+11 verbose addNamed [ 'jscs', '' ]
+12 verbose addNamed [ null, '*' ]
+13 silly lockFile 591c9664-jscs jscs@
+14 verbose lock jscs@ /Users/linorabolini/.npm/591c9664-jscs.lock
+15 silly addNameRange { name: 'jscs', range: '*', hasData: false }
+16 verbose request where is /jscs
+17 verbose request registry https://registry.npmjs.org/
+18 verbose request id ccf5d9a0a335396b
+19 verbose url raw /jscs
+20 verbose url resolving [ 'https://registry.npmjs.org/', './jscs' ]
+21 verbose url resolved https://registry.npmjs.org/jscs
+22 verbose request where is https://registry.npmjs.org/jscs
+23 info trying registry request attempt 1 at 01:33:16
+24 http GET https://registry.npmjs.org/jscs
+25 http 200 https://registry.npmjs.org/jscs
+26 silly registry.get cb [ 200,
+26 silly registry.get   { date: 'Fri, 31 Oct 2014 04:33:17 GMT',
+26 silly registry.get     server: 'CouchDB/1.5.0 (Erlang OTP/R16B03)',
+26 silly registry.get     etag: '"6YC6ZGIT3ICH6L39O4JCHX604"',
+26 silly registry.get     'content-type': 'application/json',
+26 silly registry.get     'cache-control': 'max-age=60',
+26 silly registry.get     'content-length': '152494',
+26 silly registry.get     'accept-ranges': 'bytes',
+26 silly registry.get     via: '1.1 varnish',
+26 silly registry.get     age: '28',
+26 silly registry.get     'x-served-by': 'cache-jfk1020-JFK',
+26 silly registry.get     'x-cache': 'HIT',
+26 silly registry.get     'x-cache-hits': '1',
+26 silly registry.get     'x-timer': 'S1414729997.820845,VS0,VE1',
+26 silly registry.get     vary: 'Accept',
+26 silly registry.get     'keep-alive': 'timeout=10, max=50',
+26 silly registry.get     connection: 'Keep-Alive' } ]
+27 silly addNameRange number 2 { name: 'jscs', range: '*', hasData: true }
+28 silly addNameRange versions [ 'jscs',
+28 silly addNameRange   [ '0.0.1',
+28 silly addNameRange     '0.0.2',
+28 silly addNameRange     '0.0.3',
+28 silly addNameRange     '0.0.4',
+28 silly addNameRange     '0.0.5',
+28 silly addNameRange     '0.0.6',
+28 silly addNameRange     '0.0.7',
+28 silly addNameRange     '0.0.8',
+28 silly addNameRange     '0.0.9',
+28 silly addNameRange     '0.0.10',
+28 silly addNameRange     '0.0.11',
+28 silly addNameRange     '0.0.12',
+28 silly addNameRange     '1.0.0',
+28 silly addNameRange     '1.0.1',
+28 silly addNameRange     '1.0.2',
+28 silly addNameRange     '1.0.3',
+28 silly addNameRange     '1.0.4',
+28 silly addNameRange     '1.0.5',
+28 silly addNameRange     '1.0.6',
+28 silly addNameRange     '1.0.7',
+28 silly addNameRange     '1.0.8',
+28 silly addNameRange     '1.0.10',
+28 silly addNameRange     '1.0.11',
+28 silly addNameRange     '1.0.12',
+28 silly addNameRange     '1.0.13',
+28 silly addNameRange     '1.0.14',
+28 silly addNameRange     '1.0.15',
+28 silly addNameRange     '1.1.0',
+28 silly addNameRange     '1.2.0',
+28 silly addNameRange     '1.2.1',
+28 silly addNameRange     '1.2.2',
+28 silly addNameRange     '1.2.3',
+28 silly addNameRange     '1.2.4',
+28 silly addNameRange     '1.3.0',
+28 silly addNameRange     '1.4.0',
+28 silly addNameRange     '1.4.1',
+28 silly addNameRange     '1.4.2',
+28 silly addNameRange     '1.4.3',
+28 silly addNameRange     '1.4.4',
+28 silly addNameRange     '1.4.5',
+28 silly addNameRange     '1.5.1',
+28 silly addNameRange     '1.5.2',
+28 silly addNameRange     '1.5.3',
+28 silly addNameRange     '1.5.4',
+28 silly addNameRange     '1.5.6',
+28 silly addNameRange     '1.5.7',
+28 silly addNameRange     '1.5.8',
+28 silly addNameRange     '1.5.9',
+28 silly addNameRange     '1.6.0',
+28 silly addNameRange     '1.6.1',
+28 silly addNameRange     '1.6.2',
+28 silly addNameRange     '1.7.0',
+28 silly addNameRange     '1.7.1',
+28 silly addNameRange     '1.7.2',
+28 silly addNameRange     '1.7.3' ] ]
+29 verbose addNamed [ 'jscs', '1.7.3' ]
+30 verbose addNamed [ '1.7.3', '1.7.3' ]
+31 silly lockFile 967d1e95-jscs-1-7-3 jscs@1.7.3
+32 verbose lock jscs@1.7.3 /Users/linorabolini/.npm/967d1e95-jscs-1-7-3.lock
+33 silly lockFile ae048eae-ry-npmjs-org-jscs-jscs-1-7-3-tgz https://registry.npmjs.org/jscs/-/jscs-1.7.3.tgz
+34 verbose lock https://registry.npmjs.org/jscs/-/jscs-1.7.3.tgz /Users/linorabolini/.npm/ae048eae-ry-npmjs-org-jscs-jscs-1-7-3-tgz.lock
+35 verbose addRemoteTarball [ 'https://registry.npmjs.org/jscs/-/jscs-1.7.3.tgz',
+35 verbose addRemoteTarball   '26a40ca52e03085a69b6169cdd7294e2e7e1a1df' ]
+36 info retry fetch attempt 1 at 01:33:18
+37 verbose fetch to= /var/folders/xc/9c4y14813n59lvyn_f14ctr00000gn/T/npm-6115-8ierKKq7/registry.npmjs.org/jscs/-/jscs-1.7.3.tgz
+38 http GET https://registry.npmjs.org/jscs/-/jscs-1.7.3.tgz
+39 http 200 https://registry.npmjs.org/jscs/-/jscs-1.7.3.tgz
+40 silly lockFile ae048eae-ry-npmjs-org-jscs-jscs-1-7-3-tgz https://registry.npmjs.org/jscs/-/jscs-1.7.3.tgz
+41 silly lockFile ae048eae-ry-npmjs-org-jscs-jscs-1-7-3-tgz https://registry.npmjs.org/jscs/-/jscs-1.7.3.tgz
+42 silly lockFile 967d1e95-jscs-1-7-3 jscs@1.7.3
+43 silly lockFile 967d1e95-jscs-1-7-3 jscs@1.7.3
+44 silly lockFile 591c9664-jscs jscs@
+45 silly lockFile 591c9664-jscs jscs@
+46 silly resolved [ { author: { name: 'Marat Dulin', email: 'mdevils@yandex.ru' },
+46 silly resolved     description: 'JavaScript Code Style',
+46 silly resolved     name: 'jscs',
+46 silly resolved     version: '1.7.3',
+46 silly resolved     main: 'lib/checker',
+46 silly resolved     homepage: 'https://github.com/jscs-dev/node-jscs',
+46 silly resolved     license: 'MIT',
+46 silly resolved     repository: { type: 'git', url: 'https://github.com/jscs-dev/node-jscs' },
+46 silly resolved     bugs: { url: 'https://github.com/jscs-dev/node-jscs/issues' },
+46 silly resolved     contributors:
+46 silly resolved      [ [Object],
+46 silly resolved        [Object],
+46 silly resolved        [Object],
+46 silly resolved        [Object],
+46 silly resolved        [Object],
+46 silly resolved        [Object],
+46 silly resolved        [Object] ],
+46 silly resolved     engines: { node: '>= 0.10.0' },
+46 silly resolved     dependencies:
+46 silly resolved      { colors: '~0.6.2',
+46 silly resolved        commander: '~2.3.0',
+46 silly resolved        esprima: '~1.2.2',
+46 silly resolved        'esprima-harmony-jscs': '1.1.0-dev-harmony',
+46 silly resolved        exit: '~0.1.2',
+46 silly resolved        glob: '~4.0.0',
+46 silly resolved        minimatch: '~1.0.0',
+46 silly resolved        'strip-json-comments': '~1.0.1',
+46 silly resolved        vow: '~0.4.3',
+46 silly resolved        'vow-fs': '~0.3.1',
+46 silly resolved        xmlbuilder: '~2.4.0',
+46 silly resolved        'supports-color': '~1.1.0' },
+46 silly resolved     devDependencies:
+46 silly resolved      { browserify: '~5.10.0',
+46 silly resolved        coveralls: '~2.11.1',
+46 silly resolved        'has-ansi': '~1.0.0',
+46 silly resolved        hooker: '~0.2.3',
+46 silly resolved        jshint: '~2.5.0',
+46 silly resolved        mocha: '~1.21.4',
+46 silly resolved        rewire: '~2.1.0',
+46 silly resolved        'separated-coverage': '~2.3.0',
+46 silly resolved        sinon: '~1.10.0',
+46 silly resolved        xml2js: '~0.4.2' },
+46 silly resolved     bin: { jscs: './bin/jscs' },
+46 silly resolved     'separated-coverage': { common: [Object] },
+46 silly resolved     scripts:
+46 silly resolved      { lint: 'jshint . && node bin/jscs lib test bin publish',
+46 silly resolved        test: 'npm run lint && mocha',
+46 silly resolved        coverage: 'scov run -p common',
+46 silly resolved        'coverage-html': 'scov run -p common -r html -o coverage.html',
+46 silly resolved        browserify: 'browserify --standalone JscsStringChecker lib/string-checker.js -o jscs-browser.js',
+46 silly resolved        changelog: 'git log `git describe --tags --abbrev=0`..HEAD --pretty=format:\' * %s (%an)\' | grep -v \'Merge pull request\'',
+46 silly resolved        release: 'node publish/prepublish && npm publish',
+46 silly resolved        postpublish: 'node publish/postpublish',
+46 silly resolved        travis: 'npm run test && scov run -p common -r lcov -o out.lcov && cat out.lcov | coveralls' },
+46 silly resolved     files: [ 'bin', 'lib', 'presets', 'LICENSE', 'jscs-browser.js' ],
+46 silly resolved     gitHead: '1f5d9f2b178f2772d2a9c876f8458f911a32e9be',
+46 silly resolved     _id: 'jscs@1.7.3',
+46 silly resolved     _shasum: '26a40ca52e03085a69b6169cdd7294e2e7e1a1df',
+46 silly resolved     _from: 'jscs@',
+46 silly resolved     _npmVersion: '1.4.20',
+46 silly resolved     _npmUser: { name: 'mikesherov', email: 'mike.sherov@gmail.com' },
+46 silly resolved     maintainers: [ [Object], [Object], [Object], [Object] ],
+46 silly resolved     dist:
+46 silly resolved      { shasum: '26a40ca52e03085a69b6169cdd7294e2e7e1a1df',
+46 silly resolved        tarball: 'http://registry.npmjs.org/jscs/-/jscs-1.7.3.tgz' },
+46 silly resolved     directories: {},
+46 silly resolved     _resolved: 'https://registry.npmjs.org/jscs/-/jscs-1.7.3.tgz' } ]
+47 info install jscs@1.7.3 into /usr/local/lib
+48 info installOne jscs@1.7.3
+49 verbose lib/node_modules/jscs unbuild
+50 verbose tar unpack /Users/linorabolini/.npm/jscs/1.7.3/package.tgz
+51 silly lockFile bc641b5e--usr-local-lib-node-modules-jscs tar:///usr/local/lib/node_modules/jscs
+52 verbose lock tar:///usr/local/lib/node_modules/jscs /Users/linorabolini/.npm/bc641b5e--usr-local-lib-node-modules-jscs.lock
+53 silly lockFile 923363d8-olini-npm-jscs-1-7-3-package-tgz tar:///Users/linorabolini/.npm/jscs/1.7.3/package.tgz
+54 verbose lock tar:///Users/linorabolini/.npm/jscs/1.7.3/package.tgz /Users/linorabolini/.npm/923363d8-olini-npm-jscs-1-7-3-package-tgz.lock
+55 silly gunzTarPerm modes [ '755', '644' ]
+56 error Error: EACCES, mkdir '/usr/local/lib/node_modules/jscs'
+56 error  { [Error: EACCES, mkdir '/usr/local/lib/node_modules/jscs']
+56 error   errno: 3,
+56 error   code: 'EACCES',
+56 error   path: '/usr/local/lib/node_modules/jscs',
+56 error   fstream_type: 'Directory',
+56 error   fstream_path: '/usr/local/lib/node_modules/jscs',
+56 error   fstream_class: 'DirWriter',
+56 error   fstream_stack:
+56 error    [ '/usr/local/lib/node_modules/npm/node_modules/fstream/lib/dir-writer.js:36:23',
+56 error      '/usr/local/lib/node_modules/npm/node_modules/mkdirp/index.js:46:53',
+56 error      'Object.oncomplete (fs.js:107:15)' ] }
+57 error Please try running this command again as root/Administrator.
+58 error System Darwin 14.0.0
+59 error command "node" "/usr/local/bin/npm" "install" "-g" "jscs"
+60 error cwd /Users/linorabolini/Documents/Projects/MobileController
+61 error node -v v0.10.32
+62 error npm -v 1.4.28
+63 error path /usr/local/lib/node_modules/jscs
+64 error fstream_path /usr/local/lib/node_modules/jscs
+65 error fstream_type Directory
+66 error fstream_class DirWriter
+67 error code EACCES
+68 error errno 3
+69 error stack Error: EACCES, mkdir '/usr/local/lib/node_modules/jscs'
+70 error fstream_stack /usr/local/lib/node_modules/npm/node_modules/fstream/lib/dir-writer.js:36:23
+70 error fstream_stack /usr/local/lib/node_modules/npm/node_modules/mkdirp/index.js:46:53
+70 error fstream_stack Object.oncomplete (fs.js:107:15)
+71 verbose exit [ 3, true ]

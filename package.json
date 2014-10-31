@@ -1,0 +1,8 @@
+{
+  "name": "socket-server",
+  "version": "0.0.1",
+  "description": "socket server html controller socket.io app",
+  "dependencies": {
+    "express": "^4.10.1"
+  }
+}
