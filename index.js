@@ -1,60 +1,62 @@
 'use strict';
 
-var app = require('express')();
-var http = require('http').Server(app);
-var io = require('socket.io')(http);
+var app = require('express')(),
+    http = require('http').Server(app),
+    io = require('socket.io')(http);
 
-
-app.get('/', function(req, res){
-  res.sendFile(__dirname + "/index.html");
+app.get('/', function(req, res) {
+  res.sendFile(__dirname + '/index.html');
 });
 
-io.on('connection', function(socket){
-  console.log('a user connected');
-
-  // answer handshake
+io.on('connection', function(socket) {
+  debug('a user connected');
   socket.emit('connection');
 
-
-  // create servers
-  //============================================
-
-  socket.on('register as server', function(msg){
-    console.log('a server registered');
-    socket.join('servers');
-
-    // disconnection
-    socket.on('disconnect', function () {
-      console.log('server disconnected');
-    });
+  socket.on('register as server', function() {
+    Server(socket);
   });
-  //============================================
 
-
-
-
-  // create clients
-  //============================================
-
-  socket.on('register as client', function(msg){
-    console.log('a client registered');
-    socket.join('clients');
-
-    // message
-    socket.on('message', function(msg){
-      socket.broadcast.to('servers').emit('message', msg);
-    });
-
-    // disconnection
-    socket.on('disconnect', function () {
-      console.log('user disconnected');
-    });
+  socket.on('register as client', function() {
+    Client(socket);
   });
-  //============================================
-
 });
 
-http.listen(3000, function(){
-  console.log('listening on *:3000');
+http.listen(3000, function() {
+  debug('listening on *:3000');
 });
 
+function Server(socket) {
+  debug('a server registered');
+  socket.join('servers');
+
+  // disconnection
+  socket.on('disconnect', function() {
+    debug('server disconnected');
+  });
+}
+
+function Client(socket) {
+  debug('a client registered');
+  socket.join('clients');
+
+  socket.broadcast.to('servers').emit('client connection', { id: socket.id });
+
+  // message
+  socket.on('message', function(msg) {
+    msg.id = socket.id;
+    socket.broadcast.to('servers').emit('message', msg);
+  });
+
+  // disconnection
+  socket.on('disconnect', function() {
+    debug('user disconnected');
+  });
+}
+
+function debug() {
+  var i;
+  console.log('\n===== DEBUG ======\n');
+  for (i in arguments) {
+    console.log(arguments[i]);
+  }
+}

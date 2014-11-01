@@ -8,8 +8,55 @@
       var socket = io();
 
       socket.on('connection', function() {
-        console.log('connected');
         socket.emit('register as client');
+
+        function keyEvent(event) {
+              if (event.repeat) {
+                  return;
+              }
+
+              var data = { 
+                  value: event.type === "keydown" ? 1 : 0,
+                  code: event.keyCode,
+                  type: "key"
+              };
+
+              socket.emit('message', data);
+          }
+
+          window.addEventListener("keydown", keyEvent);
+          window.addEventListener("keyup", keyEvent);
+
+
+        var initialX = null;
+        var initialY = null;
+
+
+        function handleOrientationEvent(event) {
+            var x = event.beta ? event.beta : event.y * 90;
+            var y = event.gamma ? event.gamma : event.x * 90;
+
+              if (!initialX && !initialY) {
+                  initialX = x;
+                  initialY = y;
+              } else {
+                  var positionX = initialX - x;
+                  var positionY = initialY - y;
+              }
+
+              var data = { 
+                  x: positionX,
+                  y: positionY,
+                  type: "accelerometer"
+              };
+
+              socket.emit('message', data);
+        }
+
+        // Webkit en Mozilla variant beide registreren.
+        window.addEventListener("MozOrientation", handleOrientationEvent, true);
+        window.addEventListener("deviceorientation", handleOrientationEvent, true);
+
       });
     </script>
     <style>
