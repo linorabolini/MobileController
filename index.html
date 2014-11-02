@@ -8,7 +8,7 @@
       var socket = io();
 
       socket.on('connection', function() {
-        socket.emit('register as client');
+        socket.emit('register as client', 'server');
 
         function keyEvent(event) {
               if (event.repeat) {
@@ -45,8 +45,8 @@
               }
 
               var data = { 
-                  x: positionX,
-                  y: positionY,
+                  x: positionX / 50,
+                  y: positionY / 50,
                   type: "accelerometer"
               };
 
