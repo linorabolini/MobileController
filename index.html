@@ -1,75 +1,163 @@
 <!doctype html>
 <html>
   <head>
+    <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1, maximum-scale=1">
     <title>Socket.IO Controller</title>
     <script src="/socket.io/socket.io.js"></script>
     <script src="http://code.jquery.com/jquery-1.11.1.js"></script>
+
     <script>
       var socket = io();
 
       socket.on('connection', function() {
         socket.emit('register as client', 'server');
 
-        function keyEvent(event) {
-              if (event.repeat) {
-                  return;
-              }
+        var keyMap = {
+                '65': 'ARROW_LEFT',
+                '68': 'ARROW_RIGHT',
+                '83': 'ARROW_DOWN',
+                '87': 'ARROW_UP',
+                '71': 'BUTTON_A'
+            };
 
-              var data = { 
-                  value: event.type === "keydown" ? 1 : 0,
-                  code: event.keyCode,
-                  type: "key"
-              };
+        // $('.button').mousedown(function(event) {
+        //     if (event.repeat) {
+        //         return;
+        //     }
 
-              socket.emit('message', data);
-          }
+        //     var data = { 
+        //         value: 1,
+        //         code: $(this).data("keycode"),
+        //         type: "key"
+        //     };
 
-          window.addEventListener("keydown", keyEvent);
-          window.addEventListener("keyup", keyEvent);
-
-
-        var initialX = null;
-        var initialY = null;
+        //     socket.emit('message', data);
+        //   });
 
 
-        function handleOrientationEvent(event) {
-            var x = event.beta ? event.beta : event.y * 90;
-            var y = event.gamma ? event.gamma : event.x * 90;
+        // $('.button').mouseup(function(event) {
+        //     if (event.repeat) {
+        //         return;
+        //     }
 
-              if (!initialX && !initialY) {
-                  initialX = x;
-                  initialY = y;
-              } else {
-                  var positionX = initialX - x;
-                  var positionY = initialY - y;
-              }
+        //     var data = { 
+        //         value: 0,
+        //         code: $(this).data("keycode"),
+        //         type: "key"
+        //     };
 
-              var data = { 
-                  x: positionX / 50,
-                  y: positionY / 50,
-                  type: "accelerometer"
-              };
+        //     socket.emit('message', data);
+        //   });
+        //
+        
 
-              socket.emit('message', data);
+        $(".pad").on("touchstart", handlePad)
+                 .on("touchmove", handlePad)
+                 .on("touchend", handleTouchEnd);
+
+
+
+        function handlePad(event) {
+
+            event.preventDefault();
+            var $this = $(this);
+            var width = $this.outerWidth();
+            var height = $this.outerHeight();
+            var offset = $this.offset();
+            var touches = event.originalEvent.changedTouches;
+            var data = {};
+            data[$this.data("horizontal")] = map(touches[0].pageX, width + offset.left, offset.left, -width * 0.5, width * 0.5);
+            data[$this.data("vertical")] = map(touches[0].pageY, height + offset.top, offset.top, -height * 0.5, height * 0.5);
+            socket.emit('message', data);
         }
 
-        // Webkit en Mozilla variant beide registreren.
-        window.addEventListener("MozOrientation", handleOrientationEvent, true);
-        window.addEventListener("deviceorientation", handleOrientationEvent, true);
+        function handleTouchEnd(event) {
 
-      });
+            event.preventDefault();
+            var $this = $(this);
+            var data = {};
+            data[$this.data("horizontal")] = 0;
+            data[$this.data("vertical")] = 0;
+
+            socket.emit('message', data);
+        }
+        
+        $(".button").on("touchstart", function(event) {
+
+            var data = {};
+            data[$(this).data("keycode")] = 1;
+
+            socket.emit('message', data);
+        }).on("touchend", function(event) {
+
+            var data = {};
+            data[$(this).data("keycode")] = 0;
+
+            socket.emit('message', data);
+        });
+
+
+        function map(value, istart, istop, ostart, ostop) {
+            return ostart + (ostop - ostart) * ((value - istart) / (istop - istart));
+        }
+
+        function keyEvent(event) {
+            if (event.repeat) {
+                return;
+            }
+            var data = { 
+                value: event.type === "keydown" ? 1 : 0,
+                code: keyMap[event.keyCode] || 0,
+                type: "key"
+            };
+            socket.emit('message', data);
+        }
+        window.addEventListener("keydown", keyEvent);
+        window.addEventListener("keyup", keyEvent);
+
+
+
+        });
+
     </script>
-    <style>
-      * { margin: 0; padding: 0; box-sizing: border-box; }
-      body { font: 13px Helvetica, Arial; }
-      form { background: #000; padding: 3px; position: fixed; bottom: 0; width: 100%; }
-      form input { border: 0; padding: 10px; width: 90%; margin-right: .5%; }
-      form button { width: 9%; background: rgb(130, 224, 255); border: none; padding: 10px; }
-      #messages { list-style-type: none; margin: 0; padding: 0; }
-      #messages li { padding: 5px 10px; }
-      #messages li:nth-child(odd) { background: #eee; }
+    <style type="text/css">
+    article,aside,details,figcaption,figure,footer,header,hgroup,main,nav,section,summary{display:block;}audio,canvas,video{display:inline-block;}audio:not([controls]){display:none;height:0;}[hidden]{display:none;}html{font-family:sans-serif;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;}body{margin:0;}a:focus{outline:thin dotted;}a:active,a:hover{outline:0;}h1{font-size:2em;margin:0.67em 0;}abbr[title]{border-bottom:1px dotted;}b,strong{font-weight:bold;}dfn{font-style:italic;}hr{-moz-box-sizing:content-box;box-sizing:content-box;height:0;}mark{background:#ff0;color:#000;}code,kbd,pre,samp{font-family:monospace,serif;font-size:1em;}pre{white-space:pre-wrap;}q{quotes:"\201C" "\201D" "\2018" "\2019";}small{font-size:80%;}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline;}sup{top:-0.5em;}sub{bottom:-0.25em;}img{border:0;}svg:not(:root){overflow:hidden;}figure{margin:0;}fieldset{border:1px solid #c0c0c0;margin:0 2px;padding:0.35em 0.625em 0.75em;}legend{border:0;padding:0;}button,input,select,textarea{font-family:inherit;font-size:100%;margin:0;}button,input{line-height:normal;}button,select{text-transform:none;}button,html input[type="button"],input[type="reset"],input[type="submit"]{-webkit-appearance:button;cursor:pointer;}button[disabled],html input[disabled]{cursor:default;}input[type="checkbox"],input[type="radio"]{box-sizing:border-box;padding:0;}input[type="search"]{-webkit-appearance:textfield;-moz-box-sizing:content-box;-webkit-box-sizing:content-box;box-sizing:content-box;}input[type="search"]::-webkit-search-cancel-button,input[type="search"]::-webkit-search-decoration{-webkit-appearance:none;}button::-moz-focus-inner,input::-moz-focus-inner{border:0;padding:0;}textarea{overflow:auto;vertical-align:top;}table{border-collapse:collapse;border-spacing:0;}
+    html, body {
+        height: 100%;
+        width: 100%;
+        position:fixed;
+    }
+
+    .col.h33 {
+        height: 33%;
+        display: block;
+        position: relative;
+    }
+
+    .button, .pad {
+        display: block;   
+        box-sizing: border-box;
+        height: 100%;
+        width: 100%;
+        border: 1px solid black;
+    }
+
+    .w50 {
+        width: 50%;
+    }
+
+    .pull-left {
+        float: left;
+        height: 100%;
+    }
     </style>
   </head>
   <body>
+    <div class="pull-left w50">
+      <div class="pad" data-horizontal="ARROW_LEFT" data-vertical="ARROW_UP"></div>
+    </div>
+    <div class="pull-left w50">
+      <div class="pad" data-horizontal="ARROW_2_LEFT" data-vertical="ARROW_2_UP"></div>
+    </div>
   </body>
 </html>
